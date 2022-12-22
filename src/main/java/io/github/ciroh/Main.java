@@ -14,13 +14,15 @@ public class Main {
 
 	}
 	
-	public String generateMD5Checksum(String filePath) throws IOException, NoSuchAlgorithmException, IllegalAccessException {
+	public void walkFolderPath() {
+		
+	}
+	
+	public String generateMD5Checksum(String filePath) throws IOException, NoSuchAlgorithmException{
 		String checksum = "";
-		if(validateFile(filePath)){
 			byte[] data = Files.readAllBytes(Path.of(filePath));
 			byte[] hash = MessageDigest.getInstance("MD5").digest(data);
 			checksum = new BigInteger(1,hash).toString(16);
-		} else throw new IllegalAccessException();
 		return checksum;
 	}
 	
