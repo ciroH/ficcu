@@ -40,8 +40,18 @@ public class Main {
 
 	}
 	
-	public void walkFolderPath() {
-		
+	public static List<Path> walkFolderPath(String dirPath) throws IOException {
+		Path directory = Paths.get(dirPath);
+		List<Path> filePaths;	
+			try(Stream<Path> filePathsStream = Files.walk(directory)){
+				   filePaths = filePathsStream
+							  .filter(Files::isRegularFile)
+							  .collect(Collectors.toList());
+			} catch (IOException ioe) {
+			 throw new IOException("Folder Tree structure cannot be walked; IO error");
+			}
+			
+	    return filePaths;
 	}
 	
 	public String generateMD5Checksum(String filePath) throws IOException, NoSuchAlgorithmException{
