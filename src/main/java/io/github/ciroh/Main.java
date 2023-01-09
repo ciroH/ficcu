@@ -4,13 +4,39 @@ import java.io.IOException;
 import java.math.BigInteger;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Main {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		//Read user input
+		String rootFolder = "/tmp";
+		String fileFolder = "$HOME/Downloads/SerializedPOJO.xml";
+		ArrayList<FileEntity> fileList = new ArrayList<>();
+		try {
+			FileEntity filePOJO;
+			String fileMD5Checksum;
+			//validate xml folder is writable
+			//
+			validateFile(rootFolder);
+			List<Path> folderList = walkFolderPath(rootFolder);
+			for (Path path : folderList) {
+				fileMD5Checksum = generateMD5Checksum(path.toString());
+				filePOJO = new FileEntity(path.toString(), fileMD5Checksum);
+				fileList.add(filePOJO);
+			}
+			
+		} catch (IllegalAccessException iae) {
+			//iae.getMessage();
+		} catch (IOException | NoSuchAlgorithmException e) {
+			// ioe.getCause() + " : " + ioe.getMessage();
+		}
 
 	}
 	
