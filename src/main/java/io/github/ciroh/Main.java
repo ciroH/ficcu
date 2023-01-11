@@ -14,7 +14,7 @@ import java.util.stream.Stream;
 
 public class Main {
 
-	public static void main(String[] args) {
+	public static void main(String... args) {
 		//Read user input
 		String rootFolder = "/tmp";
 		String fileFolder = "$HOME/Downloads/SerializedPOJO.xml";
