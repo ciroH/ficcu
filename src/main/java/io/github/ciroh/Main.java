@@ -15,7 +15,7 @@ import java.util.stream.Stream;
 public class Main {
 
 	public static void main(String... args) {
-		//Read user input
+		processInitializationParameters(args);
 		String rootFolder = "/tmp";
 		String fileFolder = "$HOME/Downloads/SerializedPOJO.xml";
 		ArrayList<FileEntity> fileList = new ArrayList<>();
@@ -70,6 +70,10 @@ public class Main {
 			throw new IllegalAccessException("I dont have access permissions for a folder, SubFolder, or file");
 		}
 		return fileIsValid;
+	}
+	
+	public static void processInitializationParameters(String[] args) {
+		
 	}
 
 }
