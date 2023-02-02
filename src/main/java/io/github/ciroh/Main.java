@@ -15,7 +15,7 @@ import java.util.stream.Stream;
 public class Main {
 
 	public static void main(String... args) {
-		processInitializationParameters(args);
+		processInitializationParameters(args); //throws IllegalArgumentException
 		String rootFolder = "/tmp";
 		String fileFolder = "$HOME/Downloads/SerializedPOJO.xml";
 		ArrayList<FileEntity> fileList = new ArrayList<>();
@@ -67,13 +67,19 @@ public class Main {
 							//Implicit Files.exists(Path.of(filePath)); 
 						   && Files.isRegularFile(Path.of(filePath));
 		if(!fileIsValid) {
-			throw new IllegalAccessException("I dont have access permissions for a folder, SubFolder, or file");
+			throw new IllegalAccessException("I dont have access permissions for a folder, subFolder, or file");
 		}
 		return fileIsValid;
 	}
 	
 	public static void processInitializationParameters(String[] args) {
-		
+		for (String arg : args) {
+			boolean throwsException = true;
+			for (ParameterValue value : ParameterValue.values()) {
+				if(arg.equals(value)) throwsException = false; 
+			}
+			if(throwsException) throw new IllegalArgumentException(arg+ " is not a valid parameter!");
+		}
 	}
 
 }
