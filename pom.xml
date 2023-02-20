@@ -7,6 +7,8 @@
   <description>File Integrity Checker Command-line Utility</description>
 
   <properties>
+	<maven.compiler.target>17</maven.compiler.target>
+    	<maven.compiler.source>17</maven.compiler.source>
   	<jasypt-version>1.9.3</jasypt-version>
   	<jacksonxml-version>2.11.1</jacksonxml-version>
   </properties>
