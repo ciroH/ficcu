@@ -24,10 +24,10 @@ public class Main {
 			String fileMD5Checksum;
 			//validate xml folder is writable
 			//
-			validateFile(rootFolder);
-			List<Path> folderList = walkFolderPath(rootFolder);
+			validateFile(Path.of(rootFolder));							//
+			List<Path> folderList = walkFolderPath(rootFolder);// i should invert these two lines. also validateFile would throw error since i'm passing the root folder instead of actually regular files
 			for (Path path : folderList) {
-				fileMD5Checksum = generateMD5Checksum(path.toString());
+				fileMD5Checksum = generateMD5Checksum(path);
 				filePOJO = new FileEntity(path.toString(), fileMD5Checksum);
 				fileList.add(filePOJO);
 			}
