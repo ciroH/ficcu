@@ -54,9 +54,9 @@ public class Main {
 	    return filePaths;
 	}
 	
-	public static String generateMD5Checksum(String filePath) throws IOException, NoSuchAlgorithmException{
+	public static String generateMD5Checksum(Path filePath) throws IOException, NoSuchAlgorithmException{
 		String checksum = "";
-			byte[] data = Files.readAllBytes(Path.of(filePath));
+			byte[] data = Files.readAllBytes(filePath);
 			byte[] hash = MessageDigest.getInstance("MD5").digest(data);
 			checksum = new BigInteger(1,hash).toString(16);
 		return checksum;
