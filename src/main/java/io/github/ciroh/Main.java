@@ -67,7 +67,7 @@ public class Main {
 							//Implicit Files.exists(Path.of(filePath)); 
 						   && Files.isRegularFile(Path.of(filePath));
 		if(!fileIsValid) {
-			throw new IllegalAccessException("I dont have access permissions for a folder, subFolder, or file");
+			throw new IllegalAccessException("I dont have access permissions for a folder|subFolder|file, or a file is a special file (NOT a regular file!)");
 		}
 		return fileIsValid;
 	}
