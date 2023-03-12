@@ -76,7 +76,7 @@ public class Main {
 		for (String arg : args) {
 			boolean throwsException = true;
 			for (ParameterValue value : ParameterValue.values()) {
-				if(arg.equals(value)) throwsException = false; 
+				if(arg.equalsIgnoreCase(value.toString())) throwsException = false;
 			}
 			if(throwsException) throw new IllegalArgumentException(arg+ " is not a valid parameter!");
 		}
