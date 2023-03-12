@@ -62,10 +62,10 @@ public class Main {
 		return checksum;
 	}
 	
-	public static boolean validateFile(String filePath) throws IllegalAccessException {
-		boolean fileIsValid = Files.isReadable(Path.of(filePath)) 
+	public static boolean validateFile(Path filePath) throws IllegalAccessException {
+		boolean fileIsValid = Files.isReadable(filePath)
 							//Implicit Files.exists(Path.of(filePath)); 
-						   && Files.isRegularFile(Path.of(filePath));
+						   && Files.isRegularFile(filePath);
 		if(!fileIsValid) {
 			throw new IllegalAccessException("I dont have access permissions for a folder|subFolder|file, or a file is a special file (NOT a regular file!)");
 		}
