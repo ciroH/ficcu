@@ -76,10 +76,17 @@ public class Main {
 		for (String arg : args) {
 			boolean throwsException = true;
 			for (ParameterValue value : ParameterValue.values()) {
-				if(arg.equalsIgnoreCase(value.toString())) throwsException = false;
+				if(arg.equalsIgnoreCase(value.toString())) throwsException = false; //TODO: value.toString+"="+"value"
 			}
 			if(throwsException) throw new IllegalArgumentException(arg+ " is not a valid parameter!");
 		}
 	}
 
+	public static void createXml(Path xmlPath) throws IOException {
+		if (!xmlPath.toString().endsWith(".xml")) {
+			xmlPath = Paths.get(xmlPath.toString()+".xml");
+		}
+		Files.createFile(xmlPath);
+	}
+	
 }
