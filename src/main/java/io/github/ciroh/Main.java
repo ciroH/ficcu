@@ -89,4 +89,9 @@ public class Main {
 		Files.createFile(xmlPath);
 	}
 	
+	public static void serializePojoToXml(List<FileEntity> pojoList) {
+		
+		
+	}
+	
 }
