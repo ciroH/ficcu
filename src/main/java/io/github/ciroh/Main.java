@@ -86,7 +86,10 @@ public class Main {
 		if (!xmlPath.toString().endsWith(".xml")) {
 			xmlPath = Paths.get(xmlPath.toString()+".xml");
 		}
-		Files.createFile(xmlPath);
+		if (!Files.exists(xmlPath)) {
+			Files.createFile(xmlPath);
+		}
+		else throw new IOException("The checksums file already exists! " + System.lineSeparator() + " Call ficcu again with a different OUTPUT_FILE argument");
 	}
 	
 	public static void serializePojoToXml(List<FileEntity> pojoList) {
