@@ -2,6 +2,7 @@ package io.github.ciroh;
 
 import java.io.IOException;
 import java.math.BigInteger;
+import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -82,12 +83,13 @@ public class Main {
 		}
 	}
 
-	public static void createXml(Path xmlPath) throws IOException {
+	public static void createXml(Path xmlPath) throws IOException, IllegalAccessException, FileAlreadyExistsException {
 		if (!xmlPath.toString().endsWith(".xml")) {
 			xmlPath = Paths.get(xmlPath.toString()+".xml");
 		}
 		if (!Files.exists(xmlPath)) {
 			Files.createFile(xmlPath);
+			validateFile(xmlPath);
 		}
 		else throw new IOException("The checksums file already exists! " + System.lineSeparator() + " Call ficcu again with a different OUTPUT_FILE argument");
 	}
